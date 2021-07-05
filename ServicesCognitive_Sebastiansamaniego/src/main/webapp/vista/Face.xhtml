@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Services Cognitives - Face</title>
+    </h:head>
+    <h:body>
+        <center>
+            <h2 style="margin-top:0">Analizar el rostro de la Persona</h2>
+            <p:growl showDetail="true" />
+            <h:form id="form">
+                <p:inputText value="#{atributosC.url}" required="true" requiredMessage="Inserte URL" placeholder="Inserte la URL de la Imagen" size="90"/>
+                <br/>
+                <p:commandButton id="btnEnviar" value="Enviar" style="color: #ffffff; background-color: springgreen" actionListener="#{atributosC.analizar()}" update="form @this"/>
+                <p:commandButton id="btnlimpiar" value="Limpiar" style="background-color: #ffffff" actionListener="#{atributosC.limpiar()}" update="form"/>
+                <br/>
+                <br/>
+                <p:panelGrid columns="2" id="dlg" rendered="#{atributosC.bt}">
+                    <f:facet name="header">
+                        <img src="#{atributosC.atributo.url}" width="350"/>
+                    </f:facet>
+                    
+                        <p:outputLabel value="Emoción"/>
+                        <p:outputLabel value="#{atributosC.atributo.emotion}"/>
+
+                        <p:outputLabel value="Lentes"/>
+                        <p:outputLabel value="#{atributosC.atributo.glasses}"/>
+
+                        <p:outputLabel value="Edad"/>
+                        <p:outputLabel value="#{atributosC.atributo.age}"/>
+
+                        <p:outputLabel value="Sexo"/>
+                        <p:outputLabel value="#{atributosC.atributo.gender}"/>
+
+                        <p:outputLabel value="Color de cabello"/>
+                        <p:outputLabel value="#{atributosC.atributo.hairColor}"/>
+                </p:panelGrid>
+            </h:form>
+        </center>
+    </h:body>
+</html>
